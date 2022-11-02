@@ -17,7 +17,9 @@ static struct GameData {
 class MyGame {
 
     private:
-        SDL_Rect player1 = { 0, 0, 20, 60 };
+        SDL_Rect player1 = { 800 / 4, (600 / 2) - 30, 20, 60 };
+        SDL_Rect player2 = { 3 * 800 / 4 - 20, (600 / 2) - 30, 20, 60 };
+        SDL_Rect ball = { 800 / 5, (600 / 5) - 30, 15, 15 };
 
     public:
         std::vector<std::string> messages;

@@ -23,14 +23,23 @@ void MyGame::input(SDL_Event& event) {
         case SDLK_w:
             send(event.type == SDL_KEYDOWN ? "W_DOWN" : "W_UP");
             break;
+        case SDLK_s:
+            send(event.type == SDL_KEYDOWN ? "S_DOWN" : "S_UP");
+            break;
     }
 }
 
 void MyGame::update() {
     player1.y = game_data.player1Y;
+    player2.y = game_data.player2Y;
+
+    ball.y = game_data.ballY;
+    ball.x = game_data.ballX;
 }
 
 void MyGame::render(SDL_Renderer* renderer) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawRect(renderer, &player1);
+    SDL_RenderDrawRect(renderer, &player2);
+    SDL_RenderDrawRect(renderer, &ball);
 }
