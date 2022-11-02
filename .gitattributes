@@ -1,2 +1,2 @@
-*.C linguist-detectable=false
-*.C++ linguist-detectable=true
+*.c linguist-detectable=false
+*.cpp linguist-detectable=true
