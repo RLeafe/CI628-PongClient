@@ -1,5 +1,5 @@
 #include "SDL_net.h"
-
+#include "SDL_image.h"
 #include "MyGame.h"
 
 using namespace std;
@@ -131,6 +131,8 @@ int run_game() {
         std::cout << "Failed to create renderer" << SDL_GetError() << std::endl;
         return -1;
     }
+
+    game->init(renderer);
 
     loop(renderer);
 

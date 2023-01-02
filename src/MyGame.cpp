@@ -1,5 +1,19 @@
 #include "MyGame.h"
 
+void MyGame::init(SDL_Renderer* renderer) {
+    SDL_Surface* surface = IMG_Load("./images/stevenD.jpg");
+
+    if (surface != nullptr) {
+        std::cout << "Loaded" << std::endl;
+    }
+    else {
+        std::cout << ("Not Loaded ", IMG_GetError()) << std::endl;
+    }
+
+    bat1 = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+}
+
 void MyGame::on_receive(std::string cmd, std::vector<std::string>& args) {
     if (cmd == "GAME_DATA") {
         // we should have exactly 4 arguments *for each moveable postion*
@@ -34,6 +48,12 @@ void MyGame::input(SDL_Event& event) {
         case SDLK_s:
             send(event.type == SDL_KEYDOWN ? "S_DOWN" : "S_UP");
             break;
+        case SDLK_i:
+            send(event.type == SDL_KEYDOWN ? "I_DOWN" : "I_UP");
+            break;
+        case SDLK_k:
+            send(event.type == SDL_KEYDOWN ? "K_DOWN" : "K_UP");
+            break;
     }
 }
 
@@ -46,6 +66,8 @@ void MyGame::update() {
 }
 
 void MyGame::render(SDL_Renderer* renderer) {
+    SDL_RenderCopy(renderer, bat1, NULL, &player1);
+
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderDrawRect(renderer, &player1);
     SDL_RenderDrawRect(renderer, &player2);

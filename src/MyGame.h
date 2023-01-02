@@ -6,6 +6,7 @@
 #include <string>
 
 #include "SDL.h"
+#include "SDL_image.h"
 #include "SDL_ttf.h"
 
 static struct GameData {
@@ -27,10 +28,12 @@ class MyGame {
         SDL_Rect player2 = { 3 * 800 / 4 - 20, (600 / 2) - 30, 20, 60 };
         SDL_Rect ball = { 800 / 5, (600 / 5) - 30, 15, 15 };
 
-    public:
-        
+        SDL_Texture* bat1;
 
+    public:
         std::vector<std::string> messages;
+
+        void init(SDL_Renderer* renderer);
 
         void on_receive(std::string message, std::vector<std::string>& args);
         void send(std::string message);
