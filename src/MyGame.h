@@ -6,6 +6,7 @@
 #include <string>
 
 #include "SDL.h"
+#include "SDL_ttf.h"
 
 static struct GameData {
     int player1Y = 0;
@@ -13,6 +14,11 @@ static struct GameData {
     int ballX = 0;
     int ballY = 0;
 } game_data;
+
+static struct Scores {
+    int player1Score = 0;
+    int player2Score = 0;
+} scores;
 
 class MyGame {
 
@@ -22,6 +28,8 @@ class MyGame {
         SDL_Rect ball = { 800 / 5, (600 / 5) - 30, 15, 15 };
 
     public:
+        
+
         std::vector<std::string> messages;
 
         void on_receive(std::string message, std::vector<std::string>& args);
