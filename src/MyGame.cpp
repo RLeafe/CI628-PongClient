@@ -1,7 +1,7 @@
 #include "MyGame.h"
 
 void MyGame::init(SDL_Renderer* renderer) {
-    SDL_Surface* surface = IMG_Load("./images/stevenD.jpg");
+    SDL_Surface* surface = IMG_Load("./images/bat1.png");
 
     if (surface != nullptr) {
         std::cout << "Loaded" << std::endl;
